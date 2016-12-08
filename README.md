@@ -4,8 +4,6 @@
 [![Total Downloads](https://poser.pugx.org/consik/yii2-cachecleaner/downloads)](https://packagist.org/packages/consik/yii2-cachecleaner)
 [![License](https://poser.pugx.org/consik/yii2-cachecleaner/license)](https://packagist.org/packages/consik/yii2-cachecleaner)
 
-Used [Ratchet](http://socketo.me/)
-
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -101,8 +99,6 @@ function someComponentAction()
 }
 ```
 
-See the doc block for [CacheCleanerBehavior::$events](/CacheCleanerBehavior.php#L32)
-
 ### Other options for defining $events property
 
-See the doc block for [CacheCleanerBehavior::$events](/CacheCleanerBehavior.php#L32)
+See the doc block for [CacheCleanerBehavior::$events](/CacheCleanerBehavior.php#L47)

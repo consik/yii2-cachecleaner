@@ -1,0 +1,21 @@
+{
+	"name": "consik/yii2-cachecleaner",
+	"description": "Yii2 behavior for deleting cache values on component event",
+	"type": "yii2-extension",
+	"keywords": ["yii2", "cache", "component", "behavior"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Sergey Poltaranin (Consik)",
+			"email": "consigliere.kz@gmail.com"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "*",
+	},
+	"autoload": {
+		"psr-4": {
+			"consik\\yii2cachecleaner\\": ""
+		}
+	}
+}

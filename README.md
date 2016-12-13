@@ -1,4 +1,4 @@
-# Yii2 [CacheCleanerBehavior](/CacheCleanerBehavior.php)
+# Yii2 CacheCleaner Extension
 
 [![Latest Stable Version](https://poser.pugx.org/consik/yii2-cachecleaner/v/stable)](https://packagist.org/packages/consik/yii2-cachecleaner)
 [![Total Downloads](https://poser.pugx.org/consik/yii2-cachecleaner/downloads)](https://packagist.org/packages/consik/yii2-cachecleaner)

@@ -47,20 +47,32 @@ class CacheCleanerBehavior extends Behavior
     /**
      * @var array Associative array where key is event name, value(array|string|null) is a cache key(s) to delete
      *
-     * deleting single cache value:
+     * #deleting single cache value:
      * [
      *  YOUR_EVENT_NAME => 'cacheValue'
      * ]
      *
-     * deleting multiple cache values:
+     * #deleting multiple cache values:
      * [
      *  YOUR_EVENT_NAME => [ 'cacheValue1', 'cacheValue2', ... ]
      * ]
      *
-     * deleting ALL cache values:
+     * #deleting ALL cache values:
      * [
      *  YOUR_EVENT_NAME => CacheClearBehaviour::ALL_CACHE_VALUES
      * ]
+     *
+     * #using inline function for getting cache values:
+     * Inline definition:
+     * [
+     *      YOUR_EVENT_NAME => function ($object) { return 'cacheValue' . $object->attribute; }
+     * ]
+     * #using object's method for getting cache values:
+     * public function cacheValueName($object)
+     * {
+     *  return 'cacheValue' . $object->attribute;
+     * }
+     *
      *
      * if value is NULL && triggered event instance of CacheUpdateEvent
      * than will be deleted cache with keys from Event's $keys attribute
@@ -100,6 +112,12 @@ class CacheCleanerBehavior extends Behavior
     public function clearCacheHandler(Event $event)
     {
         $keys = $this->events[$event->name];
+        if (is_callable($keys)) {
+            $keys = $keys($this->owner);
+        } else if (is_callable([$this->owner, $keys])) {
+            $keys = call_user_func([$this->owner, $keys], $this->owner);
+        }
+
         switch ($keys) {
             case self::ALL_CACHE_VALUES:
                 $this->flushCache();

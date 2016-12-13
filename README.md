@@ -22,6 +22,8 @@ or add
 
 ## CacheCleanerBehavior class description
 
+Deletes cache after defined events.
+
 ### Properties
 
 1. ``` array $events = []``` - Associative array where key is event name, value(array|string|null) is a cache key(s) to delete
@@ -31,6 +33,17 @@ or add
 
 1. ``` boolean deleteCache(string|array $key)``` - Deletes cache value(s)
 2. ``` boolean flushCache()``` - Deletes all cache values
+
+## ARUpdateCCBehavior class description. [#docs](/ARUpdateCCBehavior.php#L18)
+
+Deletes cache values after updating ActiveRecord attributes
+
+### Properties
+
+1. ``` array $attributes = []``` - Associative array, where array keys is attributes name, array value is cache value(s) keys
+2. ``` string $cacheComponent = 'cache'``` - Name of the application cache component
+
+See [DocBlock](/ARUpdateCCBehavior.php#L18) for usage examples.
 
 ## Examples
 

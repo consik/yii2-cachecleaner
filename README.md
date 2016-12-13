@@ -54,9 +54,9 @@ We have cached AR object somewhere in our app:
 ```php
 <?php
 ...
-if (!$model = Yii::$app->cache->get('cachedModel' . $modelID)) {
+if (!$model = Yii::$app->cache->get('cachedModel')) {
 	$model = ARModel::findOne($modelID);
-	Yii::$app->cache->set('cachedModel' . $modelID, $model);
+	Yii::$app->cache->set('cachedModel', $model);
 }
 ...
 ```
@@ -73,12 +73,15 @@ public function behaviors()
         'class' => CacheClearBehavior::className(),
         //'cacheComponent' => 'cache',  //you can define your app cache component
         'events' => [
-            ActiveRecord::EVENT_AFTER_UPDATE => 'cachedModel' . $this->id
-            ActiveRecord::EVENT_BEFORE_DELETE => 'cachedModel' . $this->id
+            ActiveRecord::EVENT_AFTER_UPDATE => 'cachedModel'
+            ActiveRecord::EVENT_BEFORE_DELETE => 'cachedModel'
         ]
     ]];
 }
 ```
+
+NOTE! When component initialize behaviors there is no attributes!
+To set cache keys with object attributes use callable param for defining. [#DocBlock](/CacheCleanerBehavior.php#L65)
 
 ### Using [CacheUpdateEvent](/events/CacheUpdateEvent.php)
 

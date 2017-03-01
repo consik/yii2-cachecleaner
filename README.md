@@ -70,7 +70,7 @@ Just use CacheCleanerBehavior in your ARModel:
 public function behaviors()
 {
     return [[
-        'class' => CacheClearBehavior::className(),
+        'class' => CacheCleanerBehavior::className(),
         //'cacheComponent' => 'cache',  //you can define your app cache component
         'events' => [
             ActiveRecord::EVENT_AFTER_UPDATE => 'cachedModel'
@@ -85,7 +85,7 @@ To set cache keys with object attributes use callable param for defining. [#DocB
 
 ### Using [CacheUpdateEvent](/events/CacheUpdateEvent.php)
 
-There is a special class in package for triggering events when you change cache values, where you can send to handler action with values and define changed cache key(s).
+There is a special class in package for triggering events when you change cache values, where you can send to handler action changed cache key(s).
 
 You can use this class with CacheCleanerBehavior if you want delete different keys using one event name.
 
@@ -96,7 +96,7 @@ Example:
 public function behaviors()
 {
     return [[
-        'class' => CacheClearBehavior::className(),
+        'class' => CacheCleanerBehavior::className(),
         'events' => [
             YOUR_EVENT_NAME => null
         ]
